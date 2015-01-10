@@ -1,0 +1,24 @@
+{
+  "name": "marionette-require-starter",
+  "version": "0.0.0",
+  "description": "A little Marionette + RequireJS app used to kick-start new projects.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "php -S localhost:8002"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/poifox/marionette-require-starter.git"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-sass": "^0.8.1"
+  },
+  "private": true,
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/poifox/marionette-require-starter/issues"
+  },
+  "homepage": "https://github.com/poifox/marionette-require-starter"
+}

@@ -27,11 +27,16 @@ var globalConfig = {
 
 module.exports = function(Grunt) {
 
+	// Load config above
 	Grunt.initConfig(globalConfig);
 
+	// Load plugins
 	Grunt.loadNpmTasks("grunt-contrib-sass");
+
+	// Register tasks
 	Grunt.registerTask("dev", ["sass:dev"]);
 	Grunt.registerTask("dist", ["sass:dev", "sass:dist"]);
+
 	// Default task is full build
 	Grunt.registerTask("default", ["dist"]);
 
