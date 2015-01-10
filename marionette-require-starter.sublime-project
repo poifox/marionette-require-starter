@@ -1,0 +1,15 @@
+{
+	"settings": {
+		"tab_size": 4,
+		"spell_check": false,
+		"translate_tabs_to_spaces": false
+		},
+	"folders":
+	[
+		{
+			"name": "Marionette + RequireJS Starter",
+			"follow_symlinks": true,
+			"path": "."
+		}
+	]
+}
