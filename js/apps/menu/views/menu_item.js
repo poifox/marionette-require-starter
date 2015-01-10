@@ -21,7 +21,7 @@ define([
 
 				linkClicked: function(evt) {
 					evt.preventDefault();
-					this.trigger("navigate", this.model);
+					this.trigger("navigate", this.model.get("trigger"));
 				}
 			});
 

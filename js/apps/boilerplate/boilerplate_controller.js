@@ -5,7 +5,6 @@ define(["app", "entities/boilerplate"], function(App) {
 		BoilerplateApp.Controller = {
 
 			home: function() {
-				console.log("home view");
 				require(["apps/boilerplate/views/home"], function() {
 					var homePage = new BoilerplateApp.Views.HomeView();
 					App.contentRegion.show(homePage);
@@ -13,16 +12,16 @@ define(["app", "entities/boilerplate"], function(App) {
 			},
 
 			index: function() {
-				console.log("index view");
 
-				require(["apps/boilerplate/views/index_layout"], function() {
+				require(["apps/boilerplate/views/index"], function() {
 					var boilerplateIndexLayout = new BoilerplateApp.Views.IndexLayoutView();
 
 					var fetching = App.request("boilerplate:index");
-					$.when(fetching).done(function(boilerplateCollection) {
+					$.when(fetching).done(function(boilerplates) {
+
 						var boilerplatePanelView = new BoilerplateApp.Views.PanelView();
 						var boilerplateIndexView = new BoilerplateApp.Views.IndexView({
-							collection: boilerplateCollection
+							collection: boilerplates
 						});
 
 						// Linking to new Boilerplate view
@@ -46,7 +45,6 @@ define(["app", "entities/boilerplate"], function(App) {
 			},
 
 			single: function(boilerplateID) {
-				console.log("single view");
 				require(["apps/boilerplate/views/single"], function() {
 					var fetching = App.request("boilerplate:view");
 					$.when(fetching).done(function(boilerplateModel) {
@@ -59,25 +57,51 @@ define(["app", "entities/boilerplate"], function(App) {
 			},
 
 			edit: function(boilerplateID) {
-				console.log("edit view");
 				require(["apps/boilerplate/views/edit"], function() {
 					var fetching = App.request("boilerplate:view");
 					$.when(fetching).done(function(boilerplateModel) {
 						var boilerplateEditView = new BoilerplateApp.Views.EditView({
 							model: boilerplateModel
 						});
+
+						boilerplateEditView.on("form:submit", function(data) {
+							var saved = boilerplateModel.save(data, {
+								wait: true,
+								error: function() {},
+								success: function() {
+									App.trigger("boilerplate:single", boilerplateModel.get("id"));
+								}
+							});
+							if (!saved) {
+								boilerplateEditView.trigger("form:data:invalid", boilerplateModel.validationError);
+							}
+						});
+
 						App.contentRegion.show(boilerplateEditView);
 					});
 				});
 			},
 
 			add: function() {
-				console.log("add view");
 				require(["apps/boilerplate/views/add"], function() {
 					var boilerplateModel = App.request("boilerplate:new");
 					var boilerplateAddView = new BoilerplateApp.Views.AddView({
 						model: boilerplateModel
 					});
+
+					boilerplateAddView.on("form:submit", function(data) {
+						var saved = boilerplateModel.save(data, {
+							wait: true,
+							error: function() {},
+							success: function() {
+								App.trigger("boilerplate:edit", boilerplateModel.get("id"));
+							}
+						});
+						if (!saved) {
+							boilerplateAddView.trigger("form:data:invalid", boilerplateModel.validationError);
+						}
+					});
+
 					App.contentRegion.show(boilerplateAddView);
 				});
 			},

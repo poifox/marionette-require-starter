@@ -9,21 +9,39 @@ define(["app"], function(App, Template) {
 					"fixtures/menu",
 					],
 					function() {
-						var menuFixtures = App.request("fixtures:menu");
-						var menuView = new MenuApp.Views.Menu({
-							collection: menuFixtures
+						// Container for complete menu
+						var menuLayoutView = new MenuApp.Views.MenuLayoutView();
+
+						// Left menu
+						var leftMenuFixtures = App.request("fixtures:menu:left");
+						var leftMenuView = new MenuApp.Views.MenuView({
+							className: "left",
+							collection: leftMenuFixtures
 						});
 
-						menuView.on("childview:navigate", function(childView, menuModel) {
-							var trigger = menuModel.get("trigger");
+						// Right menu
+						var rightMenuFixtures = App.request("fixtures:menu:right");
+						var rightMenuView = new MenuApp.Views.MenuView({
+							className: "right",
+							collection: rightMenuFixtures
+						});
+
+						// Navigation handlers
+						leftMenuView.on("childview:navigate", function(childView, trigger) {
+							App.trigger(trigger);
+						});
+						rightMenuView.on("childview:navigate", function(childView, trigger) {
 							App.trigger(trigger);
 						});
 
-						menuView.on("brand:clicked", function() {
+
+						menuLayoutView.on("show", function() {
+							menuLayoutView.leftMenuRegion.show(leftMenuView);
+							menuLayoutView.rightMenuRegion.show(rightMenuView);
+						}).on("brand:clicked", function () {
 							App.trigger("boilerplate:home");
 						});
-
-						App.headerRegion.show(menuView);
+						App.headerRegion.show(menuLayoutView);
 					});
 			}
 		};

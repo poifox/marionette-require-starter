@@ -11,24 +11,34 @@ define(["app"], function(App) {
 			}
 		});
 
-		Fixtures.Menu = Backbone.Collection.extend({
+		Fixtures.MenuCollection = Backbone.Collection.extend({
 			model: Fixtures.MenuItem
 		});
 
 		var API = {
-			getMenu: function() {
-				return new Fixtures.Menu([
+
+			getLeftMenu: function() {
+				return new Fixtures.MenuCollection([
 					// {name: "Home", url: "/", trigger: "boilerplate:home"},
 					{name: "Boilerplate", url: "/boilerplates", trigger: "boilerplate:index"}]);
+			},
+
+			getRightMenu: function() {
+				return new Fixtures.MenuCollection([
+					// {name: "Home", url: "/", trigger: "boilerplate:home"},
+					{name: "Right", url: "/", trigger: "boilerplate:home"}]);
 			}
+
 		};
 
-		App.reqres.setHandler("fixtures:menu", function () {
-			return API.getMenu();
+		App.reqres.setHandler("fixtures:menu:left", function () {
+			return API.getLeftMenu();
+		});
+
+		App.reqres.setHandler("fixtures:menu:right", function () {
+			return API.getRightMenu();
 		});
 
 	});
-
-	return App.Fixtures.Menu;
 
 });

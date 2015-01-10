@@ -11,7 +11,8 @@ requirejs.config({
 		"text": "vendor/text/text",
 		"spin": "vendor/spin.js/spin",
 		"jqspin": "vendor/spin.js/jquery.spin",
-		"backbone.syphon": "vendor/backbone.syphon/lib/amd/backbone.syphon"
+		"backbone.syphon": "vendor/backbone.syphon/lib/amd/backbone.syphon",
+		"foundation": "vendor/foundation/js/foundation"
 	},
 	shim: {
 		"underscore": {
@@ -33,10 +34,14 @@ requirejs.config({
 		},
 		"jqspin": {
 			deps: ["jquery", "spin"]
+		},
+		"foundation": {
+			deps: ["jquery", ""]
 		}
 	}
-})
+});
 
-require(["app", "apps/menu/menu_app"], function(App) {
+require(["app", "apps/menu/menu_app", "foundation"], function(App) {
 	App.start();
+	$(document).foundation();
 });

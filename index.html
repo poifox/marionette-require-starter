@@ -3,21 +3,38 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Marionette + RequireJS Starter</title>
-	<link rel="stylesheet" href="/js/vendor/foundation/css/foundation.css">
+	<link rel="stylesheet" href="/dist/css/styles.css">
+	<script src="/js/vendor/foundation/js/vendor/modernizr.js"></script>
 </head>
 <body>
 
 
-	<div id="region-header"></div>
+	<div id="region-header" class="contain-to-grid fixed">
+		<nav class="top-bar" data-topbar role="navigation">
+			<ul class="title-area">
+				<li class="name">
+					<h1><a href="/">APP</a></h1>
+				</li>
+				<li class="toggle-topbar menu-icon">
+					<a href="#"><span>Menu</span></a>
+				</li>
+			</ul>
+			<section class="top-bar-section">
+				<ul class="right">
+					<li>Right</li>
+				</ul>
+			</section>
+		</nav>
+	</div>
 
 
-	<div id="region-content">
+	<div id="region-content" class="row">
 		<h1>Hello there!</h1>
 		<p>Loading... just a second.</p>
 	</div>
 
 
-	<div id="region-footer"></div>
+	<div id="region-footer" class="row"></div>
 
 
 	<script src="/js/vendor/requirejs/require.js" data-main="/js/main"></script>

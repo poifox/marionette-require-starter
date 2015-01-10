@@ -1,34 +1,45 @@
-define(["app", "localstorage"], function(App) {
+define(["app", "apps/config/localstorage"], function(App) {
 
 	App.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
 
 		Entities.BoilerplateModel = Backbone.Model.extend({
-			baseUrl: "boilerplates",
+			urlRoot: "boilerplates",
+			// url: function() {
+			// 	return "boilerplates-" + (this.id ? "/" + this.id : "");
+			// },
 			localStorage: new Backbone.LocalStorage("Boilerplates"),
 			defaults: {
 				title: "",
 				body: ""
 			},
 			validate: function() {
-				// TODO:
+				var errors = {};
+				if (!_.isEmpty(errors)) {
+					return errors;
+				}
 			}
 		});
+		Entities.configureStorage(Entities.BoilerplateModel);
+
+
 
 		// Boilerplate Collection holds our data
 		Entities.BoilerplateCollection = Backbone.Collection.extend({
-			baseUrl: "boilerplates",
-			localStorage: new Backbone.LocalStorage("Boilerplates")
+			url: "boilerplates",
 		});
+		Entities.configureStorage(Entities.BoilerplateCollection);
+
+
 
 		var API = {
 
 			getIndex: function() {
-				var boilerplate = new Entities.BoilerplateCollection();
+				var collection = new Entities.BoilerplateCollection();
 				var defer = $.Deferred();
-				boilerplate.fetch({
+				collection.fetch({
 					wait: true,
-					success: function(entity) {
-						defer.resolve(entity);
+					success: function(collection) {
+						defer.resolve(collection);
 					}
 				});
 				return defer.promise();
@@ -41,8 +52,8 @@ define(["app", "localstorage"], function(App) {
 				var defer = $.Deferred();
 				boilerplate.fetch({
 					wait: true,
-					success: function(entity) {
-						defer.resolve(entity);
+					success: function(model) {
+						defer.resolve(model);
 					}
 				});
 				return defer.promise();
@@ -52,6 +63,7 @@ define(["app", "localstorage"], function(App) {
 				return new Entities.BoilerplateModel();
 			},
 		};
+
 
 
 		App.reqres.setHandler("boilerplate:index", function() {

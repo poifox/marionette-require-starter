@@ -1,31 +1,38 @@
 define([
 	"app",
-	"text!apps/menu/templates/menu.html",
+	"text!apps/menu/templates/menu_layout.html",
 	"apps/menu/views/menu_item"
 	],
 
-	function(App, Template) {
+	function(App, LayoutTemplate) {
 
 		App.module("MenuApp.Views", function(Views, App, Backbone, Marionette, $, _) {
 
-			Views.Menu = Marionette.CompositeView.extend({
+			Views.MenuLayoutView = Marionette.LayoutView.extend({
 
-				className: "menu top-menu",
+				template: _.template(LayoutTemplate),
 
-				template: _.template(Template),
-
-				childView: Views.MenuItem,
-
-				childViewContainer: "#menu-children",
+				regions: {
+					leftMenuRegion: "#left-menu-region",
+					rightMenuRegion: "#right-menu-region"
+				},
 
 				events: {
-					"click .menu-brand": "brandClicked"
+					"click #brand-region h1 a": "brandClicked"
 				},
 
 				brandClicked: function(evt) {
 					evt.preventDefault();
 					this.trigger("brand:clicked");
 				}
+			});
+
+			Views.MenuView = Marionette.CollectionView.extend({
+
+				tagName: "ul",
+
+				childView: Views.MenuItem,
+
 			});
 
 		});
