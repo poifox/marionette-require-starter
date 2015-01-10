@@ -8,11 +8,16 @@ define(["marionette"], function(Marionette) {
 		footerRegion: "#region-footer",
 	});
 
+	App.navigate = function(route, opts) {
+		opts = opts || {};
+		Backbone.history.navigate(route, opts);
+	};
+
 	App.on("start", function() {
-		require(["apps/boilerplate/app"], function() {
+		require(["apps/boilerplate/boilerplate_app"], function() {
 			if (Backbone.history) {
 				Backbone.history.start({
-					// pushState: true // You may not need this
+					pushState: true // You may not need this
 				});
 			}
 		});

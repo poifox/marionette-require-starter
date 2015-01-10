@@ -37,6 +37,6 @@ requirejs.config({
 	}
 })
 
-require(["app"], function(App) {
+require(["app", "apps/menu/menu_app"], function(App) {
 	App.start();
 });
