@@ -1,3 +1,9 @@
+# Sublime Text
+*.sublime-workspace
+
+# Bowerr modules
+js/vendor
+
 # Logs
 logs
 *.log
