@@ -1,7 +1,10 @@
 # Sublime Text
 *.sublime-workspace
 
-# Bowerr modules
+# Distribution files
+dist
+
+# Bower modules
 js/vendor
 
 # Logs

@@ -27,7 +27,7 @@
 		{
 			"name": "Build SCSS",
 			"shell": true,
-			"cmd" : [ "grunt dev"],
+			"cmd" : [ "grunt sass:dev"],
 			"working_dir": "${project_path}"
 		},
 	]

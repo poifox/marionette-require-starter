@@ -8,7 +8,7 @@ var globalConfig = {
 					"style": "nested"
 				},
 				files: {
-					"webroot/dist/css/styles.css": "webroot/css/styles.scss"
+					"dist/css/styles.css": "css/styles.scss"
 				}
 			},
 			dist: {
@@ -19,7 +19,7 @@ var globalConfig = {
 					"style": "compressed"
 				},
 				files: {
-					"webroot/dist/css/styles.min.css": "webroot/css/styles.scss"
+					"dist/css/styles.min.css": "css/styles.scss"
 				}
 			}
 		}
