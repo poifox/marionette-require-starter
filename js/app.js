@@ -16,6 +16,7 @@ define(["marionette"], function(Marionette) {
 	App.on("start", function() {
 		require([
 			"apps/common/views",
+			"apps/static/static_app",
 			"apps/boilerplate/boilerplate_app"
 			],
 			function() {

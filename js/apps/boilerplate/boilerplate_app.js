@@ -5,7 +5,7 @@ define(["app", "apps/boilerplate/boilerplate_controller"], function(App, Control
 
 		BoilerplateApp.Router = Marionette.AppRouter.extend({
 			appRoutes: {
-				"": "home",
+				// "": "home",
 				"boilerplates": "index",
 				"boilerplates/add": "add",
 				"boilerplates/view/:id": "single",

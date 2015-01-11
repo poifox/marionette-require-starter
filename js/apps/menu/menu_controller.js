@@ -18,26 +18,24 @@ define(["app"], function(App, Template) {
 							className: "left",
 							collection: leftMenuFixtures
 						});
-
-						// Right menu
-						var rightMenuFixtures = App.request("fixtures:menu:right");
-						var rightMenuView = new MenuApp.Views.MenuView({
-							className: "right",
-							collection: rightMenuFixtures
-						});
-
-						// Navigation handlers
 						leftMenuView.on("childview:navigate", function(childView, trigger) {
 							App.trigger(trigger);
 						});
-						rightMenuView.on("childview:navigate", function(childView, trigger) {
-							App.trigger(trigger);
-						});
 
+						// Here in case you wanna use a right-side menu
+						// Right menu
+						// var rightMenuFixtures = App.request("fixtures:menu:right");
+						// var rightMenuView = new MenuApp.Views.MenuView({
+						// 	className: "right",
+						// 	collection: rightMenuFixtures
+						// });
+						// rightMenuView.on("childview:navigate", function(childView, trigger) {
+						// 	App.trigger(trigger);
+						// });
 
 						menuLayoutView.on("show", function() {
 							menuLayoutView.leftMenuRegion.show(leftMenuView);
-							menuLayoutView.rightMenuRegion.show(rightMenuView);
+							// menuLayoutView.rightMenuRegion.show(rightMenuView);
 						}).on("brand:clicked", function () {
 							App.trigger("boilerplate:home");
 						});

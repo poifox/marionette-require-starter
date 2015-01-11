@@ -20,7 +20,9 @@ define(["app"], function(App) {
 			getLeftMenu: function() {
 				return new Fixtures.MenuCollection([
 					// {name: "Home", url: "/", trigger: "boilerplate:home"},
-					{name: "Boilerplate", url: "/boilerplates", trigger: "boilerplate:index"}]);
+					{name: "Boilerplates", url: "/boilerplates", trigger: "boilerplate:index"},
+					{name: "About", url: "/about", trigger: "static:about"}
+				]);
 			},
 
 			getRightMenu: function() {
