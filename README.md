@@ -8,16 +8,30 @@ This repo has a LOT of influence from [David Sulc's](https://twitter.com/davidsu
 
 ## Getting started
 
-You'll need node/npm and bower to get all the dependencies.
+You'll need node/npm and bower to get all the dependencies, and the sass gem to compile the SCSS style source.
 
 ```sh
+# Sass
+<package-manager> install gems
+sudo gem install sass
+
+# Bower
 npm install -g bower
+
+# Get the dependencies
 cd path/to/marionette-require-starter/
 npm install
 bower install
+
+# Compile Styles
+sass --update -C --style nested css/styles.scss dist/css/styles.css
 ```
 
 ---
+
+Now you will have to build the styles. If you're using Sublime Text, just go ahead, select the *Build SCSS* build system from the menu and hit `CTRL + B`.
+
+if you
 
 ## Creating new sub apps
 
