@@ -23,15 +23,17 @@ cd path/to/marionette-require-starter/
 npm install
 bower install
 
-# Compile Styles
-sass --update -C --style nested css/styles.scss dist/css/styles.css
 ```
 
 ---
 
 Now you will have to build the styles. If you're using Sublime Text, just go ahead, select the *Build SCSS* build system from the menu and hit `CTRL + B`.
 
-if you
+If you're using SASS the CLI way then run this:
+
+```sh
+sass --update -C --style nested css/styles.scss dist/css/styles.css
+```
 
 ## Creating new sub apps
 
