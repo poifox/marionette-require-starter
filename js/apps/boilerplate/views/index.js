@@ -16,12 +16,31 @@ define([
 				template: _.template(ItemTemplate),
 
 				events: {
-					"click a.js-view": "viewClicked"
+					"click a.js-view": "viewClicked",
+					"click a.js-edit": "editClicked",
+					"click a.js-delete": "deleteClicked",
 				},
 
 				viewClicked: function(evt) {
 					evt.preventDefault();
 					this.trigger("boilerplate:view", this.model.get("id"));
+				},
+
+				editClicked: function(evt) {
+					evt.preventDefault();
+					this.trigger("boilerplate:edit", this.model.get("id"));
+				},
+
+				deleteClicked: function(evt) {
+					evt.preventDefault();
+					this.trigger("boilerplate:delete", this.model);
+				},
+
+				close: function() {
+					var self = this;
+					this.$el.slideUp(250, "swing", function() {
+						Marionette.ItemView.prototype.close.call(self);
+					});
 				}
 
 			});
@@ -45,6 +64,7 @@ define([
 			});
 
 			Views.IndexLayoutView = Marionette.LayoutView.extend({
+				className: "column small-12",
 				template: _.template(LayoutTemplate),
 				regions: {
 					panelRegion: "#panel-region",

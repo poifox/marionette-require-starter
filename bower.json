@@ -20,7 +20,8 @@
     "normalize.css": "~3.0.2",
     "requirejs": "~2.1.15",
     "spin.js": "~2.0.2",
-    "text": "~2.0.13"
+    "text": "~2.0.13",
+    "markdown": "~0.5.0"
   },
   "license": "MIT",
   "private": true,

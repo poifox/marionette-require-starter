@@ -3,7 +3,11 @@ define(["app", "text!apps/boilerplate/templates/single.html"], function(App, Tem
 	App.module("BoilerplateApp.Views", function(Views, App, Backbone, Marionette, $, _) {
 
 		Views.SingleView = Marionette.ItemView.extend({
-			template: _.template(Template)
+
+			className: "column small-12",
+
+			template: _.template(Template),
+
 		});
 
 	});

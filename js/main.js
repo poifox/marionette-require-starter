@@ -12,14 +12,15 @@ requirejs.config({
 		"spin": "vendor/spin.js/spin",
 		"jqspin": "vendor/spin.js/jquery.spin",
 		"backbone.syphon": "vendor/backbone.syphon/lib/amd/backbone.syphon",
-		"foundation": "vendor/foundation/js/foundation"
+		"foundation": "vendor/foundation/js/foundation",
+		"markdown": "vendor/markdown/lib/markdown",
 	},
 	shim: {
 		"underscore": {
 			exports: "_"
 		},
 		"backbone": {
-			deps: ["json2", "jquery", "underscore", "text"],
+			deps: ["json2", "jquery", "underscore", "text", "markdown", "jqspin"],
 			exports: "Backbone"
 		},
 		"backbone.syphon": {
@@ -37,6 +38,9 @@ requirejs.config({
 		},
 		"foundation": {
 			deps: ["jquery", ""]
+		},
+		"markdown": {
+			exports: "Markdown"
 		}
 	}
 });

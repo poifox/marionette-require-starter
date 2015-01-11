@@ -14,13 +14,17 @@ define(["marionette"], function(Marionette) {
 	};
 
 	App.on("start", function() {
-		require(["apps/boilerplate/boilerplate_app"], function() {
-			if (Backbone.history) {
-				Backbone.history.start({
-					pushState: true // You may not need this
-				});
-			}
-		});
+		require([
+			"apps/common/views",
+			"apps/boilerplate/boilerplate_app"
+			],
+			function() {
+				if (Backbone.history) {
+					Backbone.history.start({
+						pushState: true // You may not need this
+					});
+				}
+			});
 	});
 
 	return App;
