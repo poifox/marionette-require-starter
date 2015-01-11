@@ -35,22 +35,51 @@ If you're using SASS the CLI way then run this:
 sass --update -C --style nested css/styles.scss dist/css/styles.css
 ```
 
+The boilerplates sub-app is fully functional (though extremely basic) and uses your browser's LocalStorage for persistence, you will want to remove some lines form the `entities/boilerplate.js` in order to make it communicate with your server.
+
 ## Creating new sub apps
 
-To create a new sub app just copy the entire `js/apps/boilerplate/` folder and rename it after your new conent type. 
+Let's say you want to make a new sub app to power blog posts.
 
-For example, if you want to create a blog copy the folder from `js/apps/boilerplate/` to `js/apps/blog/`. Once this is done you must rename and entire seris of names inside the sub app, from `boilerplate` to `blog` and the capitalized version of this namespace/prefix as well.
-
-You will also have to rename the files from `blolerplate_*.*` to `blog_*.*`.
-
-This command will be useful for that:
+You will have to copy the boilerplate app into a new folder like this, and its entities as well:
 
 ```sh
-cd js/apps/blog/
-find . -type f | rename 's/boilerplate/blog/'
+# Recursively copy the contents of boilerplate app
+cp -r js/apps/boilerplate js/apps/posts
+cp -r js/entities/boilerplate.js js/entities/posts.js
 ```
 
-Finally you add the `blog_app.js` dependency to `app.js` and you should be good to go and customize the templates and actions to your schema.
+Now, some files will drag the boilerplate namespacing with them, in both file name and variable names, You will want to change that. Let's first rename the `boilerplate_*` files
+
+```sh
+find js/apps/posts -type f | rename 's/boilerplate/post/'
+find js/apps/posts -type f | rename 's/boilerplate/post/'
+```
+
+Next the names of variables have to be changed, there are many mentions in the files so this has to be batch processed. If you're on Sublime Text or any editor that supports batch replacement across folders you'll be fine doing it from there, just change `boilerplate` into `post` and `Boilerplate` into `Post`.
+
+For CLI batch processing do this:
+
+```sh
+find js/apps/posts -type f -exec sed -r -i 's/boilerplate/post/g' {} \;
+find js/apps/posts -type f -exec sed -r -i 's/Boilerplate/Post/g' {} \;
+```
+
+
+Once you're don with this, you must add a menu entry in `fixtures/menu.js`
+
+```js
+getLeftMenu: function() {
+    return new Fixtures.MenuCollection([
+        // {name: "Home", url: "/", trigger: "boilerplate:home"},
+        {name: "Boilerplates", url: "/boilerplates", trigger: "boilerplate:index"},
+        {name: "Blog", url: "/blog", trigger: "blog:index"},
+        {name: "About", url: "/about", trigger: "static:about"}
+    ]);
+},
+```
+
+Finally you have to include your app in the `js/app.js` so it's loaded at runtime so your routes work.
 
 ```js
 App.on("start", function() {
@@ -70,18 +99,5 @@ App.on("start", function() {
 });
 
 return App;
-```
-
-You may also want to add a menu entry to the left-side menu on `js/fixtures/menu.js`, like so:
-
-```js
-getLeftMenu: function() {
-    return new Fixtures.MenuCollection([
-        // {name: "Home", url: "/", trigger: "boilerplate:home"},
-        {name: "Boilerplates", url: "/boilerplates", trigger: "boilerplate:index"},
-        {name: "Blog", url: "/blog", trigger: "blog:index"},
-        {name: "About", url: "/about", trigger: "static:about"}
-    ]);
-},
 ```
 
