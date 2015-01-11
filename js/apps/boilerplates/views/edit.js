@@ -1,6 +1,6 @@
-define(["app", "apps/boilerplate/views/shared_form"], function(App, Template) {
+define(["app", "apps/boilerplates/views/shared_form"], function(App, Template) {
 
-	App.module("BoilerplateApp.Views", function(Views, App, Backbone, Marionette, $, _) {
+	App.module("BoilerplatesApp.Views", function(Views, App, Backbone, Marionette, $, _) {
 
 		Views.EditView = Views.SharedFormView.extend({
 

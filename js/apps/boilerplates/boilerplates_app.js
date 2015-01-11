@@ -1,9 +1,9 @@
-define(["app", "apps/boilerplate/boilerplate_controller"], function(App, Controller) {
+define(["app", "apps/boilerplates/boilerplates_controller"], function(App, Controller) {
 
-	App.module("BoilerplateApp", function(BoilerplateApp, App, Backbone, Marionette, $, _) {
+	App.module("BoilerplatesApp", function(BoilerplatesApp, App, Backbone, Marionette, $, _) {
 
 
-		BoilerplateApp.Router = Marionette.AppRouter.extend({
+		BoilerplatesApp.Router = Marionette.AppRouter.extend({
 			appRoutes: {
 				// "": "home",
 				"boilerplates": "index",
@@ -15,19 +15,19 @@ define(["app", "apps/boilerplate/boilerplate_controller"], function(App, Control
 
 		var API = {
 			home: function() {
-				BoilerplateApp.Controller.home(arguments);
+				BoilerplatesApp.Controller.home(arguments);
 			},
 			index: function() {
-				BoilerplateApp.Controller.index();
+				BoilerplatesApp.Controller.index();
 			},
 			add: function() {
-				BoilerplateApp.Controller.add();
+				BoilerplatesApp.Controller.add();
 			},
 			single: function(boilerplateID) {
-				BoilerplateApp.Controller.single(boilerplateID);
+				BoilerplatesApp.Controller.single(boilerplateID);
 			},
 			edit: function(boilerplateID) {
-				BoilerplateApp.Controller.edit(boilerplateID);
+				BoilerplatesApp.Controller.edit(boilerplateID);
 			},
 		};
 
@@ -53,7 +53,7 @@ define(["app", "apps/boilerplate/boilerplate_controller"], function(App, Control
 		});
 
 		App.addInitializer(function() {
-			new BoilerplateApp.Router({
+			new BoilerplatesApp.Router({
 				controller: API
 			});
 		});

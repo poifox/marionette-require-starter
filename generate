@@ -1,0 +1,41 @@
+#!/bin/bash
+
+UC_TARGET_NAME=$1
+
+echo "\n\n***"
+echo "MARIONETTE-REQUIREJS STARTER SUB APP GENERATOR"
+if [ "$UC_TARGET_NAME" == "" ]; then
+	echo "Enter the capitalized, singular model name"
+	echo -n "(e.g. Post):"
+	read UC_TARGET_NAME
+fi
+
+echo "The $UC_TARGET_NAME sub app will be generated."
+echo -n "Is this correct? (y/n)"
+read CONFIRMATION
+
+if [ "$CONFIRMATION" == "y" ]; then
+	# Generate the app
+	LC_TARGET_NAME=`awk '{print tolower($0)}' <<< $UC_TARGET_NAME`
+
+	BOILERPLATE_APP="js/apps/boilerplates"
+	TARGET_APP="js/apps/"$LC_TARGET_NAME"s"
+
+	ORIGINAL_ENTITY="js/entities/boilerplate.js"
+	TARGET_ENTITY="js/entities/"$LC_TARGET_NAME".js"
+
+	# # Copy boilerplate app
+	cp -r $BOILERPLATE_APP $TARGET_APP
+	cp $ORIGINAL_ENTITY $TARGET_ENTITY
+
+	# Renaming files
+	find 'js/apps/'$LC_TARGET_NAME's' -type f | rename 's/boilerplate/'$LC_TARGET_NAME'/'
+
+	# Rename variables and namespace
+	# App, Views and Templates
+	find $TARGET_APP -type f -exec sed -r -i 's/boilerplate/'$LC_TARGET_NAME'/g' {} \;
+	find $TARGET_APP -type f -exec sed -r -i 's/Boilerplate/'$UC_TARGET_NAME'/g' {} \;
+	# Entity
+	find $TARGET_ENTITY -type f -exec sed -r -i 's/boilerplate/'$LC_TARGET_NAME'/g' {} \;
+	find $TARGET_ENTITY -type f -exec sed -r -i 's/Boilerplate/'$UC_TARGET_NAME'/g' {} \;
+fi

@@ -1,6 +1,6 @@
-define(["app", "text!apps/boilerplate/templates/shared_form.html", "backbone.syphon"], function(App, Template) {
+define(["app", "text!apps/boilerplates/templates/shared_form.html", "backbone.syphon"], function(App, Template) {
 
-	App.module("BoilerplateApp.Views", function(Views, App, Backbone, Marionette, $, _) {
+	App.module("BoilerplatesApp.Views", function(Views, App, Backbone, Marionette, $, _) {
 
 		Views.SharedFormView = Marionette.ItemView.extend({
 

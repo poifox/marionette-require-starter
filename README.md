@@ -53,7 +53,7 @@ Now, some files will drag the boilerplate namespacing with them, in both file na
 
 ```sh
 find js/apps/posts -type f | rename 's/boilerplate/post/'
-find js/apps/posts -type f | rename 's/boilerplate/post/'
+find js/entities -type f | rename 's/boilerplate/post/'
 ```
 
 Next the names of variables have to be changed, there are many mentions in the files so this has to be batch processed. If you're on Sublime Text or any editor that supports batch replacement across folders you'll be fine doing it from there, just change `boilerplate` into `post` and `Boilerplate` into `Post`.
@@ -61,8 +61,12 @@ Next the names of variables have to be changed, there are many mentions in the f
 For CLI batch processing do this:
 
 ```sh
+# App, Views and Templates
 find js/apps/posts -type f -exec sed -r -i 's/boilerplate/post/g' {} \;
 find js/apps/posts -type f -exec sed -r -i 's/Boilerplate/Post/g' {} \;
+# Entity
+find js/entities/posts -type f -exec sed -r -i 's/boilerplate/post/g' {} \;
+find js/entities/posts -type f -exec sed -r -i 's/Boilerplate/Post/g' {} \;
 ```
 
 

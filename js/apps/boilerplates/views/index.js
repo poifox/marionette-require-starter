@@ -1,15 +1,15 @@
 define([
 	"app",
-	"text!apps/boilerplate/templates/index.html",
-	"text!apps/boilerplate/templates/index_item.html",
-	"text!apps/boilerplate/templates/empty.html",
-	"text!apps/boilerplate/templates/index_layout.html",
-	"apps/boilerplate/views/panel"
+	"text!apps/boilerplates/templates/index.html",
+	"text!apps/boilerplates/templates/index_item.html",
+	"text!apps/boilerplates/templates/empty.html",
+	"text!apps/boilerplates/templates/index_layout.html",
+	"apps/boilerplates/views/panel"
 	],
 
 	function(App, IndexTemplate, ItemTemplate, EmptyTemplate, LayoutTemplate) {
 
-		App.module("BoilerplateApp.Views", function(Views, App, Backbone, Marionette, $, _) {
+		App.module("BoilerplatesApp.Views", function(Views, App, Backbone, Marionette, $, _) {
 
 			Views.IndexItemView = Marionette.ItemView.extend({
 

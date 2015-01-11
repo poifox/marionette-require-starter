@@ -1,6 +1,6 @@
-define(["app", "text!apps/boilerplate/templates/panel.html"], function(App, Template) {
+define(["app", "text!apps/boilerplates/templates/panel.html"], function(App, Template) {
 
-	App.module("BoilerplateApp.Views", function(Views, App, Backbone, Marionette, $, _) {
+	App.module("BoilerplatesApp.Views", function(Views, App, Backbone, Marionette, $, _) {
 
 		Views.PanelView = Marionette.ItemView.extend({
 

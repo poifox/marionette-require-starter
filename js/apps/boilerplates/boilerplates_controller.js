@@ -1,12 +1,12 @@
 define(["app", "entities/boilerplate"], function(App) {
 
-	App.module("BoilerplateApp", function(BoilerplateApp, App, Backbone, Marionette, $, _) {
+	App.module("BoilerplatesApp", function(BoilerplatesApp, App, Backbone, Marionette, $, _) {
 
-		BoilerplateApp.Controller = {
+		BoilerplatesApp.Controller = {
 
 			home: function() {
-				require(["apps/boilerplate/views/home"], function() {
-					var homePage = new BoilerplateApp.Views.HomeView();
+				require(["apps/boilerplates/views/home"], function() {
+					var homePage = new BoilerplatesApp.Views.HomeView();
 					App.contentRegion.show(homePage);
 				});
 			},
@@ -15,15 +15,15 @@ define(["app", "entities/boilerplate"], function(App) {
 
 				App.contentRegion.show(new App.Common.Views.Spinner());
 
-				require(["apps/boilerplate/views/index"], function() {
+				require(["apps/boilerplates/views/index"], function() {
 
-					var boilerplateIndexLayout = new BoilerplateApp.Views.IndexLayoutView();
+					var boilerplateIndexLayout = new BoilerplatesApp.Views.IndexLayoutView();
 
 					var fetching = App.request("boilerplate:index");
 					$.when(fetching).done(function(boilerplates) {
 
-						var boilerplatePanelView = new BoilerplateApp.Views.PanelView();
-						var boilerplateIndexView = new BoilerplateApp.Views.IndexView({
+						var boilerplatePanelView = new BoilerplatesApp.Views.PanelView();
+						var boilerplateIndexView = new BoilerplatesApp.Views.IndexView({
 							collection: boilerplates
 						});
 
@@ -70,13 +70,13 @@ define(["app", "entities/boilerplate"], function(App) {
 
 				App.contentRegion.show(new App.Common.Views.Spinner());
 
-				require(["apps/boilerplate/views/single"], function() {
+				require(["apps/boilerplates/views/single"], function() {
 					var fetching = App.request("boilerplate:view", boilerplateID);
 
 					$.when(fetching).done(function(boilerplateModel) {
 						var boilerplateSingleView;
 						if (boilerplateModel) {
-							boilerplateSingleView= new BoilerplateApp.Views.SingleView({
+							boilerplateSingleView= new BoilerplatesApp.Views.SingleView({
 								model: boilerplateModel
 							});
 						} else {
@@ -91,13 +91,13 @@ define(["app", "entities/boilerplate"], function(App) {
 
 				App.contentRegion.show(new App.Common.Views.Spinner());
 
-				require(["apps/boilerplate/views/edit"], function() {
+				require(["apps/boilerplates/views/edit"], function() {
 					var fetching = App.request("boilerplate:view", boilerplateID);
 
 					$.when(fetching).done(function(boilerplateModel) {
 						var boilerplateEditView;
 						if (boilerplateModel) {
-							boilerplateEditView = new BoilerplateApp.Views.EditView({
+							boilerplateEditView = new BoilerplatesApp.Views.EditView({
 								model: boilerplateModel
 							});
 
@@ -124,9 +124,9 @@ define(["app", "entities/boilerplate"], function(App) {
 			},
 
 			add: function() {
-				require(["apps/boilerplate/views/add"], function() {
+				require(["apps/boilerplates/views/add"], function() {
 					var boilerplateModel = App.request("boilerplate:new");
-					var boilerplateAddView = new BoilerplateApp.Views.AddView({
+					var boilerplateAddView = new BoilerplatesApp.Views.AddView({
 						model: boilerplateModel
 					});
 
@@ -148,7 +148,7 @@ define(["app", "entities/boilerplate"], function(App) {
 			},
 		};
 
-		return App.BoilerplateApp.Controller;
+		return App.BoilerplatesApp.Controller;
 
 	});
 

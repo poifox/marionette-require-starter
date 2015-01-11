@@ -26,17 +26,17 @@ define(["app", "apps/config/localstorage"], function(App) {
 
 
 		// Boilerplate Collection holds our data
-		Entities.BoilerplateCollection = Backbone.Collection.extend({
+		Entities.BoilerplatesCollection = Backbone.Collection.extend({
 			url: "boilerplates",
 		});
-		Entities.configureStorage(Entities.BoilerplateCollection);
+		Entities.configureStorage(Entities.BoilerplatesCollection);
 
 
 
 		var API = {
 
 			getIndex: function() {
-				var collection = new Entities.BoilerplateCollection();
+				var collection = new Entities.BoilerplatesCollection();
 				var defer = $.Deferred();
 				setTimeout(function() {
 					collection.fetch({
