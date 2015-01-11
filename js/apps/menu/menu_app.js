@@ -1,15 +1,15 @@
-define(["app", "apps/menu/menu_controller"], function(App, Controller) {
+define(["app", "apps/menu/menu_controller"], function(App) {
 
 	App.module("MenuApp", function(MenuApp, App, Backbone, Marionette, $, _) {
 
 		var API = {
 			startTopNav: function() {
-				Controller.startNav();
+				MenuApp.Controller.startNav();
 			}
 		};
 
 		App.commands.setHandler("nav:set:active", function(name) {
-			Controller.setActiveNav(name);
+			MenuApp.Controller.setActiveNav(name);
 		});
 
 		MenuApp.on("start", function() {

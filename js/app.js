@@ -16,9 +16,9 @@ define(["marionette"], function(Marionette) {
 	App.on("start", function() {
 		require([
 			"apps/common/views",
-			// Your sub-apps here
 			"apps/static/static_app",
-			"apps/boilerplate/boilerplate_app"
+			// Your sub-apps here
+			"apps/boilerplates/boilerplates_app"
 			],
 			function() {
 				if (Backbone.history) {
