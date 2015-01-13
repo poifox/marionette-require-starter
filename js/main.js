@@ -47,5 +47,6 @@ requirejs.config({
 });
 
 require(["app", "apps/menu/menu_app", "foundation"], function(App) {
+	$(document).foundation();
 	App.start();
 });
