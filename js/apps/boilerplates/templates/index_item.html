@@ -5,5 +5,5 @@
 <h3>
 	<a class="js-view" href="/boilerplates/view/<%- id %>"><%- title %></a>
 </h3>
-<%- body %>
+<%= markdown.toHTML(body) %>
 <hr>

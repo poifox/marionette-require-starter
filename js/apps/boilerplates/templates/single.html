@@ -1,9 +1,15 @@
-<h1><%- title %></h1>
-
-<p>
-	<%- body %>
-</p>
-
-<p>
-	<a href="/boilerplates/view/<%- id %>">Permalink</a>
-</p>
+<article class="boilerplate boilerplate-single">
+	<header class="boilerplate-single-header">
+		<h1><%- title %></h1>
+	</header>
+	<section class="boilerplate-body">
+		<%= markdown.toHTML(body) %>
+	</section>
+	<footer class="boilerplate-footer">
+		<p>
+			<a class="button tiny radius js-edit" href="/boilerplates/edit/<%- id %>">Edit</a> -
+			<a class="button tiny radius js-delete" href="/boilerplates/delete/<%- id %>">Delete</a>
+			<a href="/boilerplates/view/<%- id %>">Permalink</a>
+		</p>
+	</footer>
+</article>
