@@ -23,17 +23,17 @@ define([
 
 				viewClicked: function(evt) {
 					evt.preventDefault();
-					this.trigger("boilerplate:view", this.model.get("id"));
+					this.trigger("boilerplates:single", this.model.get("id"));
 				},
 
 				editClicked: function(evt) {
 					evt.preventDefault();
-					this.trigger("boilerplate:edit", this.model.get("id"));
+					this.trigger("boilerplates:edit", this.model.get("id"));
 				},
 
 				deleteClicked: function(evt) {
 					evt.preventDefault();
-					this.trigger("boilerplate:delete", this.model);
+					this.trigger("boilerplates:delete", this.model);
 				},
 
 				close: function() {
@@ -52,7 +52,7 @@ define([
 				},
 				addClicked: function(evt) {
 					evt.preventDefault();
-					this.trigger("boilerplate:add");
+					this.trigger("boilerplates:add");
 				}
 			});
 

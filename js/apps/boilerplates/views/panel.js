@@ -12,7 +12,7 @@ define(["app", "text!apps/boilerplates/templates/panel.html"], function(App, Tem
 
 			addClicked: function(evt) {
 				evt.preventDefault();
-				this.trigger("boilerplate:add");
+				this.trigger("boilerplates:add");
 			}
 		});
 
