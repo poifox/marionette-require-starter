@@ -88,15 +88,15 @@ define(["app", "apps/config/localstorage"], function(App) {
 
 
 
-		App.reqres.setHandler("boilerplate:index", function() {
+		App.reqres.setHandler("boilerplates:index", function() {
 			return API.getIndex();
 		});
 
-		App.reqres.setHandler("boilerplate:view", function(boilerplateID) {
+		App.reqres.setHandler("boilerplates:single", function(boilerplateID) {
 			return API.getSingle(boilerplateID);
 		});
 
-		App.reqres.setHandler("boilerplate:new", function() {
+		App.reqres.setHandler("boilerplates:new", function() {
 			return API.getNew();
 		});
 

@@ -31,23 +31,23 @@ define(["app", "apps/boilerplates/boilerplates_controller"], function(App, Contr
 			},
 		};
 
-		App.on("boilerplate:home", function() {
+		App.on("boilerplates:home", function() {
 			App.navigate("/");
 			API.home();
 		});
-		App.on("boilerplate:index", function() {
+		App.on("boilerplates:index", function() {
 			App.navigate("/boilerplates");
 			API.index();
 		});
-		App.on("boilerplate:add", function() {
+		App.on("boilerplates:add", function() {
 			App.navigate("/boilerplates/add");
 			API.add();
 		});
-		App.on("boilerplate:view", function(boilerplateID) {
+		App.on("boilerplates:single", function(boilerplateID) {
 			App.navigate("/boilerplates/view/" + boilerplateID);
 			API.single(boilerplateID);
 		});
-		App.on("boilerplate:edit", function(boilerplateID) {
+		App.on("boilerplates:edit", function(boilerplateID) {
 			App.navigate("/boilerplates/edit/" + boilerplateID);
 			API.edit(boilerplateID);
 		});

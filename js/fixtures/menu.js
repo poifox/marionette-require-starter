@@ -6,7 +6,7 @@ define(["app"], function(App) {
 			defaults: {
 				name: "UNDEFINED",
 				url: "/",
-				trigger: "boilerplate:index",
+				trigger: "boilerplates:index",
 				icon: "",
 			}
 		});
@@ -19,16 +19,16 @@ define(["app"], function(App) {
 
 			getLeftMenu: function() {
 				return new Fixtures.MenuCollection([
-					// {name: "Home", url: "/", trigger: "boilerplate:home"},
-					{name: "Boilerplates", url: "/boilerplates", trigger: "boilerplate:index"},
+					// {name: "Home", url: "/", trigger: "boilerplates:home"},
+					{name: "Boilerplates", url: "/boilerplates", trigger: "boilerplates:index"},
 					{name: "About", url: "/about", trigger: "static:about"}
 				]);
 			},
 
 			getRightMenu: function() {
 				return new Fixtures.MenuCollection([
-					// {name: "Home", url: "/", trigger: "boilerplate:home"},
-					{name: "Right", url: "/", trigger: "boilerplate:home"}]);
+					// {name: "Home", url: "/", trigger: "boilerplates:home"},
+					{name: "Right", url: "/", trigger: "boilerplates:home"}]);
 			}
 
 		};

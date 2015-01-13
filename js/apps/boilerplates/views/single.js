@@ -8,6 +8,28 @@ define(["app", "text!apps/boilerplates/templates/single.html"], function(App, Te
 
 			template: _.template(Template),
 
+			events: {
+				"click .js-edit": "editClicked",
+				"click .js-delete": "deleteClicked",
+				"click .js-single": "singleClicked",
+			},
+
+			editClicked: function(evt) {
+				evt.preventDefault();
+				this.trigger("boilerplates:edit", this.model.get("id"));
+			},
+
+			singleClicked: function(evt) {
+				evt.preventDefault();
+				// this.trigger("boilerplates:single", this.model.get("id"));
+			},
+
+			deleteClicked: function(evt) {
+				evt.preventDefault();
+				this.trigger("boilerplates:delete", this.model);
+			},
+
+
 		});
 
 	});
