@@ -21,8 +21,21 @@ define(["app", "apps/config/localstorage"], function(App) {
 				body: ""
 			},
 
-			validate: function() {
+			validate: function(attrs) {
 				var errors = {};
+
+				if (!attrs.title) {
+					errors.title = "No title set";
+				} else if (attrs.title.length < 2) {
+					errors.title = "title is too short";
+				}
+
+				if (!attrs.body) {
+					errors.body = "No body set";
+				} else if (attrs.body.length < 2) {
+					errors.body = "body is too short";
+				}
+
 				if (!_.isEmpty(errors)) {
 					return errors;
 				}
