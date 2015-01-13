@@ -2,40 +2,52 @@
 
 UC_TARGET_NAME=$1
 
-echo "\n\n***"
+echo \n\n
 echo "MARIONETTE-REQUIREJS STARTER SUB APP GENERATOR"
 if [ "$UC_TARGET_NAME" == "" ]; then
 	echo "Enter the capitalized, singular model name"
-	echo -n "(e.g. Post):"
+	echo -n "(e.g. Post): "
 	read UC_TARGET_NAME
 fi
 
 echo "The $UC_TARGET_NAME sub app will be generated."
-echo -n "Is this correct? (y/n)"
+echo -n "Is this correct? (y/n): "
 read CONFIRMATION
 
+# Generate the app
 if [ "$CONFIRMATION" == "y" ]; then
-	# Generate the app
+
+	echo "Preparing to generate the new $UC_TARGET_NAME sub app..."
+
+	# Setup
 	LC_TARGET_NAME=`awk '{print tolower($0)}' <<< $UC_TARGET_NAME`
 
 	BOILERPLATE_APP="js/apps/boilerplates"
-	TARGET_APP="js/apps/"$LC_TARGET_NAME"s"
-
 	ORIGINAL_ENTITY="js/entities/boilerplate.js"
+
+	TARGET_APP="js/apps/"$LC_TARGET_NAME"s"
 	TARGET_ENTITY="js/entities/"$LC_TARGET_NAME".js"
 
-	# # Copy boilerplate app
+	# Copy boilerplate app
+	echo "Copying the boileplate app into "$TARGET_APP"..."
 	cp -r $BOILERPLATE_APP $TARGET_APP
+	echo "Copying the boileplate entity into "$TARGET_ENTITY"..."
 	cp $ORIGINAL_ENTITY $TARGET_ENTITY
 
 	# Renaming files
+	echo "Renaming the files appropriately..."
 	find 'js/apps/'$LC_TARGET_NAME's' -type f | rename 's/boilerplate/'$LC_TARGET_NAME'/'
 
 	# Rename variables and namespace
 	# App, Views and Templates
+	echo "Renaming namespace and variables appropriately..."
 	find $TARGET_APP -type f -exec sed -r -i 's/boilerplate/'$LC_TARGET_NAME'/g' {} \;
 	find $TARGET_APP -type f -exec sed -r -i 's/Boilerplate/'$UC_TARGET_NAME'/g' {} \;
 	# Entity
 	find $TARGET_ENTITY -type f -exec sed -r -i 's/boilerplate/'$LC_TARGET_NAME'/g' {} \;
 	find $TARGET_ENTITY -type f -exec sed -r -i 's/Boilerplate/'$UC_TARGET_NAME'/g' {} \;
+
+	echo "FINISHED!"
+	echo "The new $UC_TARGET_NAME sub app is ready for customization."
+	echo "Please consult the README.md file for further instructions on how to load the new sub-app"
 fi
