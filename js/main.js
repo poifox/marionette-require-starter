@@ -10,7 +10,7 @@ requirejs.config({
 		"localstorage": "vendor/backbone.localstorage/backbone.localStorage",
 		"text": "vendor/text/text",
 		"spin": "vendor/spin.js/spin",
-		"jqspin": "vendor/spin.js/jquery.spin",
+		"jquery.spin": "vendor/spin.js/jquery.spin",
 		"backbone.syphon": "vendor/backbone.syphon/lib/amd/backbone.syphon",
 		"foundation": "vendor/foundation/js/foundation",
 		"markdown": "vendor/markdown/lib/markdown",
@@ -20,7 +20,7 @@ requirejs.config({
 			exports: "_"
 		},
 		"backbone": {
-			deps: ["json2", "jquery", "underscore", "text", "markdown", "jqspin"],
+			deps: ["json2", "jquery", "underscore", "text", "markdown"],
 			exports: "Backbone"
 		},
 		"backbone.syphon": {
@@ -33,19 +33,19 @@ requirejs.config({
 		"localstorage": {
 			deps: ["backbone"]
 		},
-		"jqspin": {
-			deps: ["jquery", "spin"]
+		"jquery.spin": {
+			deps: ["jquery", "spin"],
+			exports: "Spin"
 		},
 		"foundation": {
 			deps: ["jquery", ""]
 		},
 		"markdown": {
-			exports: "Markdown"
+			exports: "markdown"
 		}
 	}
 });
 
 require(["app", "apps/menu/menu_app", "foundation"], function(App) {
 	App.start();
-	$(document).foundation();
 });

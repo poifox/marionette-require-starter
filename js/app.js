@@ -25,6 +25,7 @@ define(["marionette"], function(Marionette) {
 					Backbone.history.start({
 						pushState: true // You may not need this
 					});
+					$(document).foundation();
 				}
 			});
 	});
