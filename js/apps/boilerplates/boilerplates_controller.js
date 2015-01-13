@@ -139,11 +139,10 @@ define(["app", "entities/boilerplate"], function(App) {
 									},
 									success: function() {
 										App.trigger("app:top:alert", "success", "The new boilerplate data was updated successfully.");
-
 									}
 								});
 								if (!saved) {
-									boilerplateEditView.trigger("form:data:invalid", boilerplateModel.validationError);
+									boilerplateEditView.triggerMethod("form:data:invalid", boilerplateModel.validationError);
 								}
 							});
 						} else {
@@ -171,7 +170,7 @@ define(["app", "entities/boilerplate"], function(App) {
 							}
 						});
 						if (!saved) {
-							boilerplateAddView.trigger("form:data:invalid", boilerplateModel.validationError);
+							boilerplateAddView.triggerMethod("form:data:invalid", boilerplateModel.validationError);
 						}
 					});
 
