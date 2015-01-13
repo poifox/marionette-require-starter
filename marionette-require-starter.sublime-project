@@ -19,7 +19,8 @@
 				"js/vendor/*index*",
 			],
 			"folder_exclude_patterns": [
-				"node_modules"
+				"node_modules",
+				"js/vendor"
 			]
 		}
 	],

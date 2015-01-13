@@ -17,7 +17,7 @@ define(["app", "entities/boilerplate"], function(App) {
 
 			index: function() {
 
-				App.contentRegion.show(new App.Common.Views.Spinner());
+				App.contentRegion.show(new App.CommonApp.Views.Spinner());
 
 				require(["apps/boilerplates/views/index"], function() {
 
@@ -72,7 +72,7 @@ define(["app", "entities/boilerplate"], function(App) {
 
 			single: function(boilerplateID) {
 
-				App.contentRegion.show(new App.Common.Views.Spinner());
+				App.contentRegion.show(new App.CommonApp.Views.Spinner());
 
 				require(["apps/boilerplates/views/single"], function() {
 					var fetching = App.request("boilerplates:single", boilerplateID);
@@ -105,7 +105,7 @@ define(["app", "entities/boilerplate"], function(App) {
 							});
 
 						} else {
-							boilerplateSingleView = new App.Common.Views.NotFound();
+							boilerplateSingleView = new App.CommonApp.Views.NotFound();
 						}
 						App.contentRegion.show(boilerplateSingleView);
 					});
@@ -114,7 +114,7 @@ define(["app", "entities/boilerplate"], function(App) {
 
 			edit: function(boilerplateID) {
 
-				App.contentRegion.show(new App.Common.Views.Spinner());
+				App.contentRegion.show(new App.CommonApp.Views.Spinner());
 
 				require(["apps/boilerplates/views/edit"], function() {
 					var fetching = App.request("boilerplates:single", boilerplateID);
@@ -122,16 +122,24 @@ define(["app", "entities/boilerplate"], function(App) {
 					$.when(fetching).done(function(boilerplateModel) {
 						var boilerplateEditView;
 						if (boilerplateModel) {
+
 							boilerplateEditView = new BoilerplatesApp.Views.EditView({
 								model: boilerplateModel
+							});
+
+							boilerplateEditView.on("boilerplates:single", function(boilerplateID) {
+								App.trigger("boilerplates:single", boilerplateID);
 							});
 
 							boilerplateEditView.on("form:submit", function(data) {
 								var saved = boilerplateModel.save(data, {
 									wait: true,
-									error: function() {},
+									error: function() {
+										App.trigger("app:top:alert", "error", "The new boilerplate data did not validate.");
+									},
 									success: function() {
-										App.trigger("boilerplates:single", boilerplateModel.get("id"));
+										App.trigger("app:top:alert", "success", "The new boilerplate data was updated successfully.");
+
 									}
 								});
 								if (!saved) {
@@ -139,7 +147,7 @@ define(["app", "entities/boilerplate"], function(App) {
 								}
 							});
 						} else {
-							boilerplateEditView = new App.Common.Views.NotFound();
+							boilerplateEditView = new App.CommonApp.Views.NotFound();
 						}
 
 						App.contentRegion.show(boilerplateEditView);
