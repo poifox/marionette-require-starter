@@ -1,6 +1,6 @@
 {
   "name": "marionette-require-starter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A little Marionette + RequireJS app used to kick-start new projects.",
   "main": "Gruntfile.js",
   "scripts": {
