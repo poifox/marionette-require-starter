@@ -14,9 +14,9 @@ define(["app", "apps/boilerplates/boilerplates_controller"], function(App, Contr
 		});
 
 		var API = {
-			home: function() {
-				BoilerplatesApp.Controller.home(arguments);
-			},
+			// home: function() {
+			// 	BoilerplatesApp.Controller.home(arguments);
+			// },
 			index: function() {
 				BoilerplatesApp.Controller.index();
 			},
@@ -31,10 +31,10 @@ define(["app", "apps/boilerplates/boilerplates_controller"], function(App, Contr
 			},
 		};
 
-		App.on("boilerplates:home", function() {
-			App.navigate("/");
-			API.home();
-		});
+		// App.on("boilerplates:home", function() {
+		// 	App.navigate("/");
+		// 	API.home();
+		// });
 		App.on("boilerplates:index", function() {
 			App.navigate("/boilerplates");
 			API.index();
