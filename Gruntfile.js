@@ -1,7 +1,7 @@
 // Grunt tasks
 module.exports = function(Grunt) {
 
-	var config = Grunt.file.readJSON("./grunt.json");
+	var config = Grunt.file.readJSON("./grunt.config.json");
 
 	// Load config above
 	Grunt.initConfig(config);
