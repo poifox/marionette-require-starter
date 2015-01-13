@@ -37,7 +37,7 @@ define(["app"], function(App, Template) {
 							menuLayoutView.leftMenuRegion.show(leftMenuView);
 							// menuLayoutView.rightMenuRegion.show(rightMenuView);
 						}).on("brand:clicked", function () {
-							App.trigger("boilerplate:home");
+							App.trigger("static:home");
 						});
 						App.headerRegion.show(menuLayoutView);
 					});
