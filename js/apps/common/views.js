@@ -1,6 +1,7 @@
 define([
 	"app",
-	"text!apps/common/templates/notfound.html"
+	"text!apps/common/templates/notfound.html",
+	"jquery.spin"
 	],
 
 	function(App, NotFoundTemplate) {
