@@ -3,32 +3,44 @@ define(["app", "apps/config/localstorage"], function(App) {
 	App.module("Entities", function(Entities, App, Backbone, Marionette, $, _) {
 
 		Entities.BoilerplateModel = Backbone.Model.extend({
+
+			// idAttribute: "_id" // In case you're pesisting to mongodb
+
 			// Not necessary for persisting to server
 			urlRoot: "boilerplates",
+
 			// Uncomment if persisting to server
 			// url: function() {
 			// 	return "boilerplates/" + (this.id ? "/" + this.id : "");
 			// },
+
 			localStorage: new Backbone.LocalStorage("boilerplates"),
+
 			defaults: {
 				title: "",
 				body: ""
 			},
+
 			validate: function() {
 				var errors = {};
 				if (!_.isEmpty(errors)) {
 					return errors;
 				}
 			}
+
 		});
+
 		Entities.configureStorage(Entities.BoilerplateModel);
 
 
 
 		// Boilerplate Collection holds our data
 		Entities.BoilerplatesCollection = Backbone.Collection.extend({
+
 			url: "boilerplates",
+
 		});
+
 		Entities.configureStorage(Entities.BoilerplatesCollection);
 
 
