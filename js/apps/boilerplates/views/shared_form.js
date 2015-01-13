@@ -19,11 +19,14 @@ define(["app", "text!apps/boilerplates/templates/shared_form.html", "backbone.sy
 			},
 
 			onFormDataInvalid: function(errors){
+
+				console.log(errors);
+
 				var $view = this.$el;
 
 				(function() {
 					var $form = $view.find("form");
-					$form.find(".error").each(function(){
+					$form.find("span.error").each(function(){
 						$(this).remove();
 					});
 					$form.find(".input.error").each(function(){
