@@ -23,14 +23,14 @@ requirejs.config({
 			exports: "_"
 		},
 		"backbone": {
-			deps: ["json2", "jquery", "underscore", "text", "markdown", "foundation"],
+			deps: ["json2", "jquery", "underscore", "text", "markdown"],
 			exports: "Backbone"
 		},
 		"backbone.syphon": {
 			deps: ["backbone"]
 		},
 		"marionette": {
-			deps: ["backbone", "backbone.syphon", "localstorage"],
+			deps: ["backbone", "backbone.syphon"],
 			exports: "Marionette"
 		},
 		"localstorage": {
