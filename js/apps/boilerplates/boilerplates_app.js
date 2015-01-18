@@ -13,48 +13,41 @@ define(["app", "apps/boilerplates/boilerplates_controller"], function(App, Contr
 			}
 		});
 
-		var API = {
-			// home: function() {
-			// 	BoilerplatesApp.Controller.home(arguments);
-			// },
-			index: function() {
-				BoilerplatesApp.Controller.index();
-			},
-			add: function() {
-				BoilerplatesApp.Controller.add();
-			},
-			single: function(boilerplateID) {
-				BoilerplatesApp.Controller.single(boilerplateID);
-			},
-			edit: function(boilerplateID) {
-				BoilerplatesApp.Controller.edit(boilerplateID);
-			},
-		};
-
+		// Maybe your app has a dynamic home page
+		//
 		// App.on("boilerplates:home", function() {
 		// 	App.navigate("/");
-		// 	API.home();
+		// 	BoilerplatesApp.Controller.home();
 		// });
+
+		// Boilerplates index
 		App.on("boilerplates:index", function() {
 			App.navigate("/boilerplates");
-			API.index();
-		});
-		App.on("boilerplates:add", function() {
-			App.navigate("/boilerplates/add");
-			API.add();
-		});
-		App.on("boilerplates:single", function(boilerplateID) {
-			App.navigate("/boilerplates/view/" + boilerplateID);
-			API.single(boilerplateID);
-		});
-		App.on("boilerplates:edit", function(boilerplateID) {
-			App.navigate("/boilerplates/edit/" + boilerplateID);
-			API.edit(boilerplateID);
+			BoilerplatesApp.Controller.index();
 		});
 
+		// Add a new boilerplate
+		App.on("boilerplates:add", function() {
+			App.navigate("/boilerplates/add");
+			BoilerplatesApp.Controller.add();
+		});
+
+		// GET a single boilerplate
+		App.on("boilerplates:single", function(boilerplateID) {
+			App.navigate("/boilerplates/view/" + boilerplateID);
+			BoilerplatesApp.Controller.single(boilerplateID);
+		});
+
+		// Edit a boilerplate
+		App.on("boilerplates:edit", function(boilerplateID) {
+			App.navigate("/boilerplates/edit/" + boilerplateID);
+			BoilerplatesApp.Controller.edit(boilerplateID);
+		});
+
+		// Register with the main App
 		App.addInitializer(function() {
 			new BoilerplatesApp.Router({
-				controller: API
+				controller: BoilerplatesApp.Controller
 			});
 		});
 

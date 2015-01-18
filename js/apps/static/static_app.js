@@ -10,27 +10,18 @@ define(["app", "apps/static/static_controller"], function(App, Controller) {
 			}
 		});
 
-		var API = {
-			home: function() {
-				StaticApp.Controller.home(arguments);
-			},
-			about: function() {
-				StaticApp.Controller.about();
-			},
-		};
-
 		App.on("static:home", function() {
 			App.navigate("/");
-			API.home();
+			StaticApp.Controller.home();
 		});
 		App.on("static:about", function() {
 			App.navigate("/about");
-			API.about();
+			StaticApp.Controller.about();
 		});
 
 		App.addInitializer(function() {
 			new StaticApp.Router({
-				controller: API
+				controller: StaticApp.Controller
 			});
 		});
 
