@@ -7,7 +7,7 @@ define(["app", "apps/config/localstorage"], function(App) {
 			// idAttribute: "_id" // In case you're pesisting to mongodb
 
 			// Not necessary for persisting to server
-			urlRoot: "boilerplates",
+			urlRoot: "/boilerplates",
 
 			// Uncomment if persisting to server
 			// url: function() {
@@ -25,15 +25,15 @@ define(["app", "apps/config/localstorage"], function(App) {
 				var errors = {};
 
 				if (!attrs.title) {
-					errors.title = "No title set";
+					errors.title = "Please write a nice title";
 				} else if (attrs.title.length < 2) {
-					errors.title = "title is too short";
+					errors.title = "Tthe title is too short";
 				}
 
 				if (!attrs.body) {
-					errors.body = "No body set";
+					errors.body = "Please write a nice body";
 				} else if (attrs.body.length < 2) {
-					errors.body = "body is too short";
+					errors.body = "The body is too short";
 				}
 
 				if (!_.isEmpty(errors)) {
@@ -50,7 +50,7 @@ define(["app", "apps/config/localstorage"], function(App) {
 		// Boilerplate Collection holds our data
 		Entities.BoilerplatesCollection = Backbone.Collection.extend({
 
-			url: "boilerplates",
+			url: "/boilerplates",
 
 		});
 
