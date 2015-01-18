@@ -10,14 +10,7 @@
 			"name": "Marionette + RequireJS Starter",
 			"follow_symlinks": true,
 			"path": ".",
-			"file_exclude_patterns": [
-				"js/vendor/*.json",
-				"js/vendor/*.md",
-				"js/vendor/*Gruntfile",
-				"js/vendor/*LICENSE",
-				"js/vendor/*README",
-				"js/vendor/*index*",
-			],
+			"file_exclude_patterns": [],
 			"folder_exclude_patterns": [
 				"node_modules",
 				// "js/vendor"

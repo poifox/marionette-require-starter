@@ -12,7 +12,7 @@
     "requirejs"
   ],
   "dependencies": {
-    "backbone.localstorage": "~1.1.14",
+    "backbone.localstorage": "~1.1.15",
     "backbone.marionette": "2.3.0",
     "backbone.syphon": "~0.4.1",
     "foundation": "~5.5.0",
