@@ -16,11 +16,14 @@ requirejs.config({
 		"markdown": "vendor/markdown/lib/markdown",
 	},
 	shim: {
+		"jquery": {
+			exports: "jQuery"
+		},
 		"underscore": {
 			exports: "_"
 		},
 		"backbone": {
-			deps: ["json2", "jquery", "underscore", "text", "markdown"],
+			deps: ["json2", "jquery", "underscore", "text", "markdown", "foundation"],
 			exports: "Backbone"
 		},
 		"backbone.syphon": {
@@ -38,7 +41,8 @@ requirejs.config({
 			exports: "Spin"
 		},
 		"foundation": {
-			deps: ["jquery", ""]
+			deps: ["jquery"],
+			exports: "jQuery.fn.foundation"
 		},
 		"markdown": {
 			exports: "markdown"
