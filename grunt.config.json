@@ -2,13 +2,13 @@
 	"sass": {
 		"dev": {
 			"options": {
-				"cache": false,
 				"trace": true,
 				"no-cache": true,
+				"unixNewlines": true,
 				"style": "nested"
 			},
 			"files": {
-				"dist/css/styles.css": "css/styles.scss"
+				"dist/styles.css": "css/styles.scss"
 			}
 		},
 		"dist": {
@@ -19,7 +19,31 @@
 				"style": "compressed"
 			},
 			"files": {
-				"dist/css/styles.min.css": "css/styles.scss"
+				"dist/styles.min.css": "css/styles.scss"
+			}
+		}
+	},
+	"requirejs": {
+		"dev": {
+			"options": {
+				"baseUrl": "js/",
+				"name": "vendor/almond/almond",
+				"include": "main",
+				"findNestedDependencies": true,
+				"mainConfigFile": "js/main.js",
+				"out": "dist/application.js",
+				"optimize": "none"
+			}
+		},
+		"dist": {
+			"options": {
+				"baseUrl": "js/",
+				"name": "vendor/almond/almond",
+				"include": "main",
+				"findNestedDependencies": true,
+				"mainConfigFile": "js/main.js",
+				"out": "dist/application.js",
+				"optimize": "uglify"
 			}
 		}
 	}

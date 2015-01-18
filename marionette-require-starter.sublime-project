@@ -20,15 +20,27 @@
 			],
 			"folder_exclude_patterns": [
 				"node_modules",
-				"js/vendor"
+				// "js/vendor"
 			]
 		}
 	],
 	"build_systems": [
 		{
-			"name": "Build SCSS",
+			"name": "SASS Dev",
 			"shell": true,
-			"cmd" : [ "grunt sass:dev"],
+			"cmd" : [ "grunt devcss"],
+			"working_dir": "${project_path}"
+		},
+		{
+			"name": "Marionette Dev",
+			"shell": true,
+			"cmd" : [ "grunt devjs"],
+			"working_dir": "${project_path}"
+		},
+		{
+			"name": "Build for Production",
+			"shell": true,
+			"cmd" : [ "grunt dist"],
 			"working_dir": "${project_path}"
 		},
 	]

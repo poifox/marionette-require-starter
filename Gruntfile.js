@@ -8,10 +8,12 @@ module.exports = function(Grunt) {
 
 	// Load plugins
 	Grunt.loadNpmTasks("grunt-contrib-sass");
+	Grunt.loadNpmTasks("grunt-contrib-requirejs");
 
 	// Register tasks
-	Grunt.registerTask("dev", ["sass:dev"]);
-	Grunt.registerTask("dist", ["sass:dev", "sass:dist"]);
+	Grunt.registerTask("devcss", ["sass:dev"]);
+	Grunt.registerTask("devjs", ["requirejs:dev"]);
+	Grunt.registerTask("dist", ["sass:dist", "requirejs:dist"]);
 
 	// Default task is full build
 	Grunt.registerTask("default", ["dist"]);
