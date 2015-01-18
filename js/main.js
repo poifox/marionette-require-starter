@@ -30,7 +30,7 @@ requirejs.config({
 			deps: ["backbone"]
 		},
 		"marionette": {
-			deps: ["backbone"],
+			deps: ["backbone", "backbone.syphon", "localstorage"],
 			exports: "Marionette"
 		},
 		"localstorage": {
